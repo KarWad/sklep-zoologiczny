@@ -1,0 +1,1174 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "pl-PL",
+    "discourageImplicitMeasures": true,
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/HUAWEI-LAPTOP\\SQLDEVELOPER;Pet_Store",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "HUAWEI-LAPTOP\\SQLDEVELOPER",
+            "database": "Pet_Store"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "options": {},
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "huawei-laptop\\sqldeveloper;Pet_Store",
+          "Username": "sa",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "tbl_customer",
+        "columns": [
+          {
+            "name": "customer_id",
+            "dataType": "int64",
+            "sourceColumn": "customer_id"
+          },
+          {
+            "name": "customer_code",
+            "dataType": "string",
+            "sourceColumn": "customer_code"
+          },
+          {
+            "name": "customer_name",
+            "dataType": "string",
+            "sourceColumn": "customer_name"
+          },
+          {
+            "name": "email_address",
+            "dataType": "string",
+            "sourceColumn": "email_address"
+          },
+          {
+            "name": "contact_number",
+            "dataType": "string",
+            "sourceColumn": "contact_number"
+          },
+          {
+            "name": "complete_address",
+            "dataType": "string",
+            "sourceColumn": "complete_address"
+          },
+          {
+            "name": "username",
+            "dataType": "string",
+            "sourceColumn": "username"
+          },
+          {
+            "name": "password",
+            "dataType": "string",
+            "sourceColumn": "password"
+          },
+          {
+            "name": "status",
+            "dataType": "int64",
+            "sourceColumn": "status"
+          },
+          {
+            "name": "user_id",
+            "dataType": "int64",
+            "sourceColumn": "user_id"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/HUAWEI-LAPTOP\\SQLDEVELOPER;Pet_Store\",",
+                "    dbo_tbl_customer = Source{[Schema=\"dbo\",Item=\"tbl_customer\"]}[Data]",
+                "in",
+                "    dbo_tbl_customer"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "tbl_order",
+        "columns": [
+          {
+            "name": "order_id",
+            "dataType": "int64",
+            "sourceColumn": "order_id"
+          },
+          {
+            "name": "reference_no",
+            "dataType": "string",
+            "sourceColumn": "reference_no"
+          },
+          {
+            "name": "customer_id",
+            "dataType": "int64",
+            "sourceColumn": "customer_id"
+          },
+          {
+            "name": "order_date",
+            "dataType": "dateTime",
+            "sourceColumn": "order_date"
+          },
+          {
+            "name": "order_status",
+            "dataType": "int64",
+            "sourceColumn": "order_status"
+          },
+          {
+            "name": "expected_delivery_date",
+            "dataType": "dateTime",
+            "sourceColumn": "expected_delivery_date"
+          },
+          {
+            "name": "total_amount",
+            "dataType": "double",
+            "sourceColumn": "total_amount"
+          },
+          {
+            "name": "number_of_items",
+            "dataType": "int64",
+            "sourceColumn": "number_of_items"
+          },
+          {
+            "name": "user_id",
+            "dataType": "int64",
+            "sourceColumn": "user_id"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/HUAWEI-LAPTOP\\SQLDEVELOPER;Pet_Store\",",
+                "    dbo_tbl_order = Source{[Schema=\"dbo\",Item=\"tbl_order\"]}[Data]",
+                "in",
+                "    dbo_tbl_order"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "tbl_order_detail",
+        "columns": [
+          {
+            "name": "order_detail_id",
+            "dataType": "int64",
+            "sourceColumn": "order_detail_id"
+          },
+          {
+            "name": "order_id",
+            "dataType": "int64",
+            "sourceColumn": "order_id"
+          },
+          {
+            "name": "pet_product_id",
+            "dataType": "int64",
+            "sourceColumn": "pet_product_id"
+          },
+          {
+            "name": "quantity",
+            "dataType": "int64",
+            "sourceColumn": "quantity"
+          },
+          {
+            "name": "quantity_price",
+            "dataType": "double",
+            "sourceColumn": "quantity_price"
+          },
+          {
+            "name": "status",
+            "dataType": "int64",
+            "sourceColumn": "status"
+          },
+          {
+            "name": "remarks",
+            "dataType": "string",
+            "sourceColumn": "remarks"
+          },
+          {
+            "name": "vendor_id",
+            "dataType": "int64",
+            "sourceColumn": "vendor_id"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/HUAWEI-LAPTOP\\SQLDEVELOPER;Pet_Store\",",
+                "    dbo_tbl_order_detail = Source{[Schema=\"dbo\",Item=\"tbl_order_detail\"]}[Data]",
+                "in",
+                "    dbo_tbl_order_detail"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "tbl_payment",
+        "columns": [
+          {
+            "name": "payment_id",
+            "dataType": "int64",
+            "sourceColumn": "payment_id"
+          },
+          {
+            "name": "reference_no",
+            "dataType": "string",
+            "sourceColumn": "reference_no"
+          },
+          {
+            "name": "payment_for",
+            "dataType": "int64",
+            "sourceColumn": "payment_for"
+          },
+          {
+            "name": "amount_paid",
+            "dataType": "double",
+            "sourceColumn": "amount_paid"
+          },
+          {
+            "name": "remarks",
+            "dataType": "string",
+            "sourceColumn": "remarks"
+          },
+          {
+            "name": "payment_status",
+            "dataType": "int64",
+            "sourceColumn": "payment_status"
+          },
+          {
+            "name": "paid_by",
+            "dataType": "string",
+            "sourceColumn": "paid_by"
+          },
+          {
+            "name": "user_id",
+            "dataType": "int64",
+            "sourceColumn": "user_id"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/HUAWEI-LAPTOP\\SQLDEVELOPER;Pet_Store\",",
+                "    dbo_tbl_payment = Source{[Schema=\"dbo\",Item=\"tbl_payment\"]}[Data]",
+                "in",
+                "    dbo_tbl_payment"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "tbl_pet",
+        "columns": [
+          {
+            "name": "pet_id",
+            "dataType": "int64",
+            "sourceColumn": "pet_id"
+          },
+          {
+            "name": "pet_description",
+            "dataType": "string",
+            "sourceColumn": "pet_description"
+          },
+          {
+            "name": "pet_category_id",
+            "dataType": "int64",
+            "sourceColumn": "pet_category_id"
+          },
+          {
+            "name": "pet_status",
+            "dataType": "int64",
+            "sourceColumn": "pet_status"
+          },
+          {
+            "name": "user_id",
+            "dataType": "int64",
+            "sourceColumn": "user_id"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/HUAWEI-LAPTOP\\SQLDEVELOPER;Pet_Store\",",
+                "    dbo_tbl_pet = Source{[Schema=\"dbo\",Item=\"tbl_pet\"]}[Data]",
+                "in",
+                "    dbo_tbl_pet"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "tbl_pet_category",
+        "columns": [
+          {
+            "name": "pet_category_id",
+            "dataType": "int64",
+            "sourceColumn": "pet_category_id"
+          },
+          {
+            "name": "pet_category_name",
+            "dataType": "string",
+            "sourceColumn": "pet_category_name"
+          },
+          {
+            "name": "user_id",
+            "dataType": "int64",
+            "sourceColumn": "user_id"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/HUAWEI-LAPTOP\\SQLDEVELOPER;Pet_Store\",",
+                "    dbo_tbl_pet_category = Source{[Schema=\"dbo\",Item=\"tbl_pet_category\"]}[Data]",
+                "in",
+                "    dbo_tbl_pet_category"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "tbl_pet_product",
+        "columns": [
+          {
+            "name": "pet_product_id",
+            "dataType": "int64",
+            "sourceColumn": "pet_product_id"
+          },
+          {
+            "name": "product_code",
+            "dataType": "string",
+            "sourceColumn": "product_code"
+          },
+          {
+            "name": "product_name",
+            "dataType": "string",
+            "sourceColumn": "product_name"
+          },
+          {
+            "name": "product_detail",
+            "dataType": "string",
+            "sourceColumn": "product_detail"
+          },
+          {
+            "name": "product_category_id",
+            "dataType": "int64",
+            "sourceColumn": "product_category_id"
+          },
+          {
+            "name": "quantity_on_hand",
+            "dataType": "int64",
+            "sourceColumn": "quantity_on_hand"
+          },
+          {
+            "name": "vendor_price",
+            "dataType": "double",
+            "sourceColumn": "vendor_price"
+          },
+          {
+            "name": "retail_price",
+            "dataType": "double",
+            "sourceColumn": "retail_price"
+          },
+          {
+            "name": "discount",
+            "dataType": "double",
+            "sourceColumn": "discount"
+          },
+          {
+            "name": "vendor_id",
+            "dataType": "int64",
+            "sourceColumn": "vendor_id"
+          },
+          {
+            "name": "status",
+            "dataType": "int64",
+            "sourceColumn": "status"
+          },
+          {
+            "name": "user_id",
+            "dataType": "int64",
+            "sourceColumn": "user_id"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/HUAWEI-LAPTOP\\SQLDEVELOPER;Pet_Store\",",
+                "    dbo_tbl_pet_product = Source{[Schema=\"dbo\",Item=\"tbl_pet_product\"]}[Data]",
+                "in",
+                "    dbo_tbl_pet_product"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "tbl_pet_product_category",
+        "columns": [
+          {
+            "name": "product_category_id",
+            "dataType": "int64",
+            "sourceColumn": "product_category_id"
+          },
+          {
+            "name": "category_name",
+            "dataType": "string",
+            "sourceColumn": "category_name"
+          },
+          {
+            "name": "user_id",
+            "dataType": "int64",
+            "sourceColumn": "user_id"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/HUAWEI-LAPTOP\\SQLDEVELOPER;Pet_Store\",",
+                "    dbo_tbl_pet_product_category = Source{[Schema=\"dbo\",Item=\"tbl_pet_product_category\"]}[Data]",
+                "in",
+                "    dbo_tbl_pet_product_category"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "tbl_service",
+        "columns": [
+          {
+            "name": "service_id",
+            "dataType": "int64",
+            "sourceColumn": "service_id"
+          },
+          {
+            "name": "reference_no",
+            "dataType": "string",
+            "sourceColumn": "reference_no"
+          },
+          {
+            "name": "service_name",
+            "dataType": "string",
+            "sourceColumn": "service_name"
+          },
+          {
+            "name": "service_detail",
+            "dataType": "string",
+            "sourceColumn": "service_detail"
+          },
+          {
+            "name": "service_fee",
+            "dataType": "double",
+            "sourceColumn": "service_fee"
+          },
+          {
+            "name": "vendor_id",
+            "dataType": "int64",
+            "sourceColumn": "vendor_id"
+          },
+          {
+            "name": "user_id",
+            "dataType": "int64",
+            "sourceColumn": "user_id"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/HUAWEI-LAPTOP\\SQLDEVELOPER;Pet_Store\",",
+                "    dbo_tbl_service = Source{[Schema=\"dbo\",Item=\"tbl_service\"]}[Data]",
+                "in",
+                "    dbo_tbl_service"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "tbl_user",
+        "columns": [
+          {
+            "name": "user_id",
+            "dataType": "int64",
+            "sourceColumn": "user_id"
+          },
+          {
+            "name": "username",
+            "dataType": "string",
+            "sourceColumn": "username"
+          },
+          {
+            "name": "password",
+            "dataType": "string",
+            "sourceColumn": "password"
+          },
+          {
+            "name": "fullname",
+            "dataType": "string",
+            "sourceColumn": "fullname"
+          },
+          {
+            "name": "contact",
+            "dataType": "string",
+            "sourceColumn": "contact"
+          },
+          {
+            "name": "email",
+            "dataType": "string",
+            "sourceColumn": "email"
+          },
+          {
+            "name": "user_category_id",
+            "dataType": "int64",
+            "sourceColumn": "user_category_id"
+          },
+          {
+            "name": "status",
+            "dataType": "int64",
+            "sourceColumn": "status"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/HUAWEI-LAPTOP\\SQLDEVELOPER;Pet_Store\",",
+                "    dbo_tbl_user = Source{[Schema=\"dbo\",Item=\"tbl_user\"]}[Data]",
+                "in",
+                "    dbo_tbl_user"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "tbl_user_group",
+        "columns": [
+          {
+            "name": "user_group_id",
+            "dataType": "int64",
+            "sourceColumn": "user_group_id"
+          },
+          {
+            "name": "group_name",
+            "dataType": "string",
+            "sourceColumn": "group_name"
+          },
+          {
+            "name": "description",
+            "dataType": "string",
+            "sourceColumn": "description"
+          },
+          {
+            "name": "allow_add",
+            "dataType": "int64",
+            "sourceColumn": "allow_add"
+          },
+          {
+            "name": "allow_edit",
+            "dataType": "int64",
+            "sourceColumn": "allow_edit"
+          },
+          {
+            "name": "allow_delete",
+            "dataType": "int64",
+            "sourceColumn": "allow_delete"
+          },
+          {
+            "name": "allow_print",
+            "dataType": "int64",
+            "sourceColumn": "allow_print"
+          },
+          {
+            "name": "allow_import",
+            "dataType": "int64",
+            "sourceColumn": "allow_import"
+          },
+          {
+            "name": "allow_export",
+            "dataType": "int64",
+            "sourceColumn": "allow_export"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/HUAWEI-LAPTOP\\SQLDEVELOPER;Pet_Store\",",
+                "    dbo_tbl_user_group = Source{[Schema=\"dbo\",Item=\"tbl_user_group\"]}[Data]",
+                "in",
+                "    dbo_tbl_user_group"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "tbl_vendor",
+        "columns": [
+          {
+            "name": "company_id",
+            "dataType": "int64",
+            "sourceColumn": "company_id"
+          },
+          {
+            "name": "company_name",
+            "dataType": "string",
+            "sourceColumn": "company_name"
+          },
+          {
+            "name": "company_contact_person",
+            "dataType": "string",
+            "sourceColumn": "company_contact_person"
+          },
+          {
+            "name": "company_email",
+            "dataType": "string",
+            "sourceColumn": "company_email"
+          },
+          {
+            "name": "company_contact_number",
+            "dataType": "string",
+            "sourceColumn": "company_contact_number"
+          },
+          {
+            "name": "company_website",
+            "dataType": "string",
+            "sourceColumn": "company_website"
+          },
+          {
+            "name": "company_profile",
+            "dataType": "string",
+            "sourceColumn": "company_profile"
+          },
+          {
+            "name": "vendor_username",
+            "dataType": "string",
+            "sourceColumn": "vendor_username"
+          },
+          {
+            "name": "vendor_password",
+            "dataType": "string",
+            "sourceColumn": "vendor_password"
+          },
+          {
+            "name": "user_id",
+            "dataType": "int64",
+            "sourceColumn": "user_id"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/HUAWEI-LAPTOP\\SQLDEVELOPER;Pet_Store\",",
+                "    dbo_tbl_vendor = Source{[Schema=\"dbo\",Item=\"tbl_vendor\"]}[Data]",
+                "in",
+                "    dbo_tbl_vendor"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "4bd28cb5-f477-40d8-ae25-e79520c5dcb2",
+        "fromTable": "tbl_customer",
+        "fromColumn": "user_id",
+        "toTable": "tbl_order",
+        "toColumn": "user_id"
+      },
+      {
+        "name": "b129699a-2d3f-479d-b499-87687be27628",
+        "fromTable": "tbl_order_detail",
+        "fromColumn": "order_id",
+        "toTable": "tbl_order",
+        "toColumn": "order_id"
+      },
+      {
+        "name": "1da3aff5-25ce-4da1-b06a-6b5f9f137c19",
+        "fromTable": "tbl_payment",
+        "fromColumn": "user_id",
+        "toTable": "tbl_customer",
+        "toColumn": "user_id"
+      },
+      {
+        "name": "e7ae1a53-f3cd-4ea9-863c-100beb5cc8ee",
+        "fromTable": "tbl_customer",
+        "fromColumn": "user_id",
+        "toTable": "tbl_pet",
+        "toColumn": "user_id"
+      },
+      {
+        "name": "ff7f35eb-e2a0-4f24-b5a0-09cfe5523b81",
+        "fromTable": "tbl_customer",
+        "fromColumn": "user_id",
+        "toTable": "tbl_vendor",
+        "toColumn": "user_id"
+      },
+      {
+        "name": "327bbe6e-68b8-42e4-8ba3-e7cda1bca2a7",
+        "fromTable": "tbl_user",
+        "fromColumn": "user_id",
+        "toTable": "tbl_customer",
+        "toColumn": "user_id"
+      },
+      {
+        "name": "a7f5ae61-23f7-49a0-bb46-9eb1627436b5",
+        "fromTable": "tbl_service",
+        "fromColumn": "user_id",
+        "toTable": "tbl_order",
+        "toColumn": "user_id"
+      },
+      {
+        "name": "b3514cdb-5637-496e-8898-16e6a7af50cc",
+        "fromTable": "tbl_pet_product_category",
+        "fromColumn": "user_id",
+        "toTable": "tbl_order",
+        "toColumn": "user_id"
+      },
+      {
+        "name": "7bc4af1a-2414-4270-a809-459f766493c8",
+        "fromTable": "tbl_pet_product",
+        "fromColumn": "user_id",
+        "toTable": "tbl_order",
+        "toColumn": "user_id"
+      },
+      {
+        "name": "cfbed909-4d6f-4347-9e5c-e198c0454f4c",
+        "fromTable": "tbl_pet",
+        "fromColumn": "user_id",
+        "toTable": "tbl_pet_category",
+        "toColumn": "user_id"
+      },
+      {
+        "name": "d6b59aba-129f-49fb-b0ed-d69a95fe761e",
+        "fromTable": "tbl_pet_category",
+        "fromColumn": "user_id",
+        "toTable": "tbl_user_group",
+        "toColumn": "user_group_id"
+      }
+    ],
+    "perspectives": [
+      {
+        "name": "New Perspective",
+        "tables": [
+          {
+            "name": "tbl_customer",
+            "columns": [
+              {
+                "name": "complete_address"
+              },
+              {
+                "name": "contact_number"
+              },
+              {
+                "name": "customer_code"
+              },
+              {
+                "name": "customer_id"
+              },
+              {
+                "name": "customer_name"
+              },
+              {
+                "name": "email_address"
+              },
+              {
+                "name": "password"
+              },
+              {
+                "name": "status"
+              },
+              {
+                "name": "user_id"
+              },
+              {
+                "name": "username"
+              }
+            ]
+          },
+          {
+            "name": "tbl_order",
+            "columns": [
+              {
+                "name": "customer_id"
+              },
+              {
+                "name": "expected_delivery_date"
+              },
+              {
+                "name": "number_of_items"
+              },
+              {
+                "name": "order_date"
+              },
+              {
+                "name": "order_id"
+              },
+              {
+                "name": "order_status"
+              },
+              {
+                "name": "reference_no"
+              },
+              {
+                "name": "total_amount"
+              },
+              {
+                "name": "user_id"
+              }
+            ]
+          },
+          {
+            "name": "tbl_order_detail",
+            "columns": [
+              {
+                "name": "order_detail_id"
+              },
+              {
+                "name": "order_id"
+              },
+              {
+                "name": "pet_product_id"
+              },
+              {
+                "name": "quantity"
+              },
+              {
+                "name": "quantity_price"
+              },
+              {
+                "name": "remarks"
+              },
+              {
+                "name": "status"
+              },
+              {
+                "name": "vendor_id"
+              }
+            ]
+          },
+          {
+            "name": "tbl_payment",
+            "columns": [
+              {
+                "name": "amount_paid"
+              },
+              {
+                "name": "paid_by"
+              },
+              {
+                "name": "payment_for"
+              },
+              {
+                "name": "payment_id"
+              },
+              {
+                "name": "payment_status"
+              },
+              {
+                "name": "reference_no"
+              },
+              {
+                "name": "remarks"
+              },
+              {
+                "name": "user_id"
+              }
+            ]
+          },
+          {
+            "name": "tbl_pet",
+            "columns": [
+              {
+                "name": "pet_category_id"
+              },
+              {
+                "name": "pet_description"
+              },
+              {
+                "name": "pet_id"
+              },
+              {
+                "name": "pet_status"
+              },
+              {
+                "name": "user_id"
+              }
+            ]
+          },
+          {
+            "name": "tbl_pet_category",
+            "columns": [
+              {
+                "name": "pet_category_id"
+              },
+              {
+                "name": "pet_category_name"
+              },
+              {
+                "name": "user_id"
+              }
+            ]
+          },
+          {
+            "name": "tbl_pet_product",
+            "columns": [
+              {
+                "name": "discount"
+              },
+              {
+                "name": "pet_product_id"
+              },
+              {
+                "name": "product_category_id"
+              },
+              {
+                "name": "product_code"
+              },
+              {
+                "name": "product_detail"
+              },
+              {
+                "name": "product_name"
+              },
+              {
+                "name": "quantity_on_hand"
+              },
+              {
+                "name": "retail_price"
+              },
+              {
+                "name": "status"
+              },
+              {
+                "name": "user_id"
+              },
+              {
+                "name": "vendor_id"
+              },
+              {
+                "name": "vendor_price"
+              }
+            ]
+          },
+          {
+            "name": "tbl_pet_product_category",
+            "columns": [
+              {
+                "name": "category_name"
+              },
+              {
+                "name": "product_category_id"
+              },
+              {
+                "name": "user_id"
+              }
+            ]
+          },
+          {
+            "name": "tbl_service",
+            "columns": [
+              {
+                "name": "reference_no"
+              },
+              {
+                "name": "service_detail"
+              },
+              {
+                "name": "service_fee"
+              },
+              {
+                "name": "service_id"
+              },
+              {
+                "name": "service_name"
+              },
+              {
+                "name": "user_id"
+              },
+              {
+                "name": "vendor_id"
+              }
+            ]
+          },
+          {
+            "name": "tbl_user",
+            "columns": [
+              {
+                "name": "contact"
+              },
+              {
+                "name": "email"
+              },
+              {
+                "name": "fullname"
+              },
+              {
+                "name": "password"
+              },
+              {
+                "name": "status"
+              },
+              {
+                "name": "user_category_id"
+              },
+              {
+                "name": "user_id"
+              },
+              {
+                "name": "username"
+              }
+            ]
+          },
+          {
+            "name": "tbl_user_group",
+            "columns": [
+              {
+                "name": "allow_add"
+              },
+              {
+                "name": "allow_delete"
+              },
+              {
+                "name": "allow_edit"
+              },
+              {
+                "name": "allow_export"
+              },
+              {
+                "name": "allow_import"
+              },
+              {
+                "name": "allow_print"
+              },
+              {
+                "name": "description"
+              },
+              {
+                "name": "group_name"
+              },
+              {
+                "name": "user_group_id"
+              }
+            ]
+          },
+          {
+            "name": "tbl_vendor",
+            "columns": [
+              {
+                "name": "company_contact_number"
+              },
+              {
+                "name": "company_contact_person"
+              },
+              {
+                "name": "company_email"
+              },
+              {
+                "name": "company_id"
+              },
+              {
+                "name": "company_name"
+              },
+              {
+                "name": "company_profile"
+              },
+              {
+                "name": "company_website"
+              },
+              {
+                "name": "user_id"
+              },
+              {
+                "name": "vendor_password"
+              },
+              {
+                "name": "vendor_username"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
